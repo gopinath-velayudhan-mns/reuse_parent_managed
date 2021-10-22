@@ -2,17 +2,9 @@ name: Reusable workflow example  - No Inputs
 
 on:
   workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
-#     secrets:
-#       token:
-#         required: true
-
 jobs:
   example_job:
-    name: Pass input and secrets to my-action
+    name:  my-action with no inputs
     runs-on: ubuntu-latest
     steps:
       # Runs a single command using the runners shell
