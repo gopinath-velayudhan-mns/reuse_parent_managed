@@ -24,7 +24,7 @@ jobs:
           echo username: ${{ inputs.username }}
           echo ${{ inputs.username }}
 
-      - uses: ./.github/workflow/print_name.yml@main
+      - uses: ./.github/workflows/print_name.yml@main
         with:
           name: ${{ inputs.username }}
           home: 'Jupiter'  
