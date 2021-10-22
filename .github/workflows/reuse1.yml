@@ -6,19 +6,16 @@ on:
       username:
         required: true
         type: string
-    secrets:
-      token:
-        required: true
+  #  secrets:
+  #    token:
+  #      required: true
 
 jobs:
   example_job:
     name: Pass input and secrets to my-action
     runs-on: ubuntu-latest
     steps:
-#       - uses: ./.github/actions/my-action@v1
-#         with:
-#           username: ${{ inputs.username }}
-#           token: ${{ secrets.token }}   
+ 
           
       - name: Run a one-line script
         run: echo Hello, world from REUSER WORKFLOW!
@@ -27,4 +24,9 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo username: ${{ inputs.username }}
-          echo token: ${{ secrets.token }}  
+          #echo token: ${{ secrets.token }}  
+
+#      - uses: ./.github/actions/my-action@v1
+#         with:
+#           username: ${{ inputs.username }}
+#           token: ${{ secrets.token }}  
