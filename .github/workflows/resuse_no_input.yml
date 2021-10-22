@@ -1,0 +1,26 @@
+name: Reusable workflow example  - No Inputs
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
+
+jobs:
+  example_job:
+    name: Pass input and secrets to my-action
+    runs-on: ubuntu-latest
+    steps:
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world from Reuse Workflow !
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add more REUSE Action with no Inputs to build,
+          echo test, and deploy your project.     
