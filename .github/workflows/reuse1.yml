@@ -24,10 +24,7 @@ jobs:
           echo username: ${{ inputs.username }}
           echo ${{ inputs.username }}
 
-
-
-
-#      - uses: ./.github/actions/my-action@v1
-#         with:
-#           username: ${{ inputs.username }}
-#           token: ${{ secrets.token }}  
+      - uses: ./.github/actions/print_name.yml@main
+        with:
+          name: ${{ inputs.username }}
+          home: 'Jupiter'  
