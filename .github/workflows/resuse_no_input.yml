@@ -15,4 +15,5 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add more REUSE Action with no Inputs to build,
-          echo test, and deploy your project.     
+          echo test, and deploy your project.  
+          echo another new steps for action in the parent workflow.
