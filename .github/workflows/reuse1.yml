@@ -24,8 +24,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo username: ${{ inputs.username }}
-          #echo token: ${{ secrets.token }}  
-
+          echo ${{ inputs.username }}
 #      - uses: ./.github/actions/my-action@v1
 #         with:
 #           username: ${{ inputs.username }}
