@@ -47,9 +47,9 @@ jobs:
            
       - name: Execute build and push
         run: |
-         echo docker build -f ${{ dockerfile_name }} . -t ${{secrets.acr_servername}}/${{inputs.acr_packagename}}:${{github.run_id }}
+         echo docker build -f ${{ inputs.dockerfile_name }} . -t ${{secrets.acr_servername}}/${{inputs.acr_packagename}}:${{github.run_id }}
          echo docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename}}:${{ github.run_id }}
          
-         docker build -f ${{ dockerfile_name }} . -t ${{ secrets.acr_servername}}/${{inputs.acr_packagename}}:${{github.run_id }}
+         docker build -f ${{ inputs.dockerfile_name }} . -t ${{ secrets.acr_servername}}/${{inputs.acr_packagename}}:${{github.run_id }}
          docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename}}:${{ github.run_id }}
          # docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename }}
