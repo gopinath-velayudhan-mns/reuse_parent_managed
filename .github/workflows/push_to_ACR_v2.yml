@@ -1,0 +1,39 @@
+name: Reusable Push to ACR
+on:
+  workflow_call:
+    inputs:
+      
+      acr_packagename:
+        required: true
+        type: string  
+    secrets:
+      acr_username:
+        required: true
+      acr_password:
+        required: true
+      acr_servername:
+        required: true
+        
+jobs:
+  acr_push:
+    name: push artifacts to ACR
+    runs-on: ubuntu-latest
+    steps:
+      
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo packagename_sent_to_push: ${{ inputs.acr_packagename }}
+          
+      - name: Azure Container Registry Login
+        uses: Azure/docker-login@v1
+        with:
+          # Container registry username
+          username: ${{ secrets.acr_username }}
+          # Container registry password
+          password: ${{ secrets.acr_password }}
+          # Container registry server url
+          login-server: ${{ secretss.acr_servername }} 
+           
+      - run:   
+          docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename }}
