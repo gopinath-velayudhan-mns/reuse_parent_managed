@@ -32,10 +32,11 @@ jobs:
         uses: Azure/docker-login@v1
         with:
           # Container registry username
-          username: ${{ secrets.ACR_USER }}
+          username: ${{ inputs.acr_username }}
           # Container registry password
-          password: ${{ secrets.ACR_PASS }}
+          password: ${{ inputs.acr_password }}
           # Container registry server url
-          login-server: ${{ secrets.ACR_SERVER }} 
+          login-server: ${{ inputs.acr_servername }} 
+           
       - run:   
-          docker push ${{ secrets.ACR_SERVER }}/tomcat_gv:${{ github.run_id }}
+          docker push ${{ inputs.acr_servername }}/${{inputs.acr_packagename }}
