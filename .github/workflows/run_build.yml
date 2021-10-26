@@ -29,10 +29,14 @@ jobs:
     steps:
       # Runs a set of commands using the runners shell
       - uses: actions/checkout@v2
-      - name: Run a multi-line script
+      - name: Quick Check on the parameters Passed
         run: |
           echo =================  Executing the Build Using Parent Resuable Action ======================
           echo packagename_sent_to_push: ${{ inputs.acr_packagename }}
+          echo Docke File Path name_sent_to_push: ${{ inputs.dockerfile_path }}
+          echo Docker File name_sent_to_push: ${{ inputs.dockerfile_name }}
+          echo package Tag_sent_to_push: ${{ inputs.acr_packagetag }}
+          echo Current build run ID: ${{github.run_id }}
           pwd
           ls -lart
           docker ps
