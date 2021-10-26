@@ -26,7 +26,7 @@ jobs:
           echo packagename_sent_to_push: ${{ inputs.acr_packagename }}
           pwd
           ls -lart
-          docker ls
+          docker ps
       - name: Azure Container Registry Login
         uses: Azure/docker-login@v1
         with:
