@@ -35,7 +35,7 @@ jobs:
           # Container registry password
           password: ${{ secrets.acr_password }}
           # Container registry server url
-          login-server: ${{ secretss.acr_servername }} 
+          login-server: ${{ secrets.acr_servername }} 
            
       - run:   
           docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename }}
