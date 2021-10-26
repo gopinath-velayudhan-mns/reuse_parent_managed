@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run a multi-line script
         run: |
-          echo $$$$$$$$$$$$$$$$$  Executing the Build Using Parent Resuable Action $$$$$$$$$$$$$$$$$$
+          echo =================  Executing the Build Using Parent Resuable Action ======================
           echo packagename_sent_to_push: ${{ inputs.acr_packagename }}
           pwd
           ls -lart
@@ -48,7 +48,7 @@ jobs:
            
       - name: Execute build and push
         run: |
-         echo $$$$$$$$$$$$$$$$$  Executing the Build Using Parent Resuable Action $$$$$$$$$$$$$$$$$$
+         echo =================  Executing the Build Using Parent Resuable Action ======================
          echo docker build -f ${{ inputs.dockerfile_name }} . -t ${{secrets.acr_servername}}/${{inputs.acr_packagename}}:${{github.run_id }}
          echo docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename}}:${{ github.run_id }}
          
