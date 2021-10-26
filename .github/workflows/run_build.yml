@@ -27,7 +27,6 @@ jobs:
     name: push artifacts to ACR
     runs-on: ubuntu-latest
     steps:
-      
       # Runs a set of commands using the runners shell
       - uses: actions/checkout@v2
       - name: Run a multi-line script
@@ -46,10 +45,11 @@ jobs:
           # Container registry server url
           login-server: ${{ secrets.acr_servername }} 
            
-      - run: |
-         echo docker build -f Dockerfile . -t ${{ secrets.ACR_SERVER}}/${{inputs.acr_packagename}}:${{github.run_id }}
-         echo docker push ${{ secrets.ACR_SERVER }}/${{inputs.acr_packagename}}:${{ github.run_id }}
+      - name: Execute build and push
+        run: |
+         echo docker build -f ${{ dockerfile_name }} . -t ${{secrets.acr_servername}}/${{inputs.acr_packagename}}:${{github.run_id }}
+         echo docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename}}:${{ github.run_id }}
          
-         docker build -f Dockerfile . -t ${{ secrets.ACR_SERVER}}/${{inputs.acr_packagename}}:${{github.run_id }}
-         docker push ${{ secrets.ACR_SERVER }}/${{inputs.acr_packagename}}:${{ github.run_id }}
-         #docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename }}
+         docker build -f ${{ dockerfile_name }} . -t ${{ secrets.acr_servername}}/${{inputs.acr_packagename}}:${{github.run_id }}
+         docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename}}:${{ github.run_id }}
+         # docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename }}
