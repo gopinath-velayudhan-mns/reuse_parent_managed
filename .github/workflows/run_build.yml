@@ -47,7 +47,9 @@ jobs:
           login-server: ${{ secrets.acr_servername }} 
            
       - run: |
+         echo docker build -f Dockerfile . -t ${{ secrets.ACR_SERVER}}/${{inputs.acr_packagename}}:${{github.run_id }}
+         echo docker push ${{ secrets.ACR_SERVER }}/${{inputs.acr_packagename}}:${{ github.run_id }}
          
-         docker build -f Dockerfile . -t ${{ secrets.ACR_SERVER}}/${{acr_packagename}}:${{github.run_id }}
-         docker push ${{ secrets.ACR_SERVER }}/${{acr_packagename}}:${{ github.run_id }}
+         docker build -f Dockerfile . -t ${{ secrets.ACR_SERVER}}/${{inputs.acr_packagename}}:${{github.run_id }}
+         docker push ${{ secrets.ACR_SERVER }}/${{inputs.acr_packagename}}:${{ github.run_id }}
          #docker push ${{ secrets.acr_servername }}/${{inputs.acr_packagename }}
