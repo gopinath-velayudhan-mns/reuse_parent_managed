@@ -11,6 +11,9 @@ on:
       acr_servername:
         required: true
         type: string
+      acr_packagename:
+        required: true
+        type: string  
 
 jobs:
   acr_push:
@@ -34,5 +37,5 @@ jobs:
           password: ${{ secrets.ACR_PASS }}
           # Container registry server url
           login-server: ${{ secrets.ACR_SERVER }} 
-       - run:   
+      - run:   
           docker push ${{ secrets.ACR_SERVER }}/tomcat_gv:${{ github.run_id }}
